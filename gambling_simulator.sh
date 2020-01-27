@@ -28,7 +28,7 @@ for ((i=1; i<=$DAY; i++))
 		 done
 	     playingDay[playingDay$i]=$(($STAKE-$cash))
    		totalAmount=$((totalAmount+${playingDay[playingDay$i]}))	
-#	    echo ${playingDay[playingDay$i]} ":" $totalAmount
+	     echo "DAY $i  : "${playingDay[playingDay$i]}
 	done
 }
 totalDay
