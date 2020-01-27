@@ -2,12 +2,19 @@ echo "Welcome to Gambling Simulator "
 STAKE=100
 BET=1
 cash=$STAKE
-if [[ $((RANDOM%2)) -eq 1 ]]
-	then
-	echo "You win"
-	((cash++))
-else
-	echo "You losse"
-	((cash--))
+function bet(){
+	if [[ $((RANDOM%2)) -eq 1 ]]
+	 then
+		echo "You win"
+		cash=$((cash+$BET))
+	else
+		echo "You losse"
+		cash=$((cash-$BET))
 	fi
-echo $cash
+}
+resign=$(($STAKE*50/100))
+while [[ $cash -gt $(($STAKE-$resign)) && $cash -lt $(($STAKE+$resign)) ]]
+do 
+   bet
+done
+echo "resign with $cash"
