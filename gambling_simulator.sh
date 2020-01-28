@@ -33,6 +33,9 @@ for ((i=1; i<=$DAY; i++))
 			playingDay[playingDay$p]=$totalAmount
 
 	done
+        echo "20 Day amount with win/loose : " $totalAmount
+         echo "luckiest Day : "; luckDay | sort -k2 -rn | head -1;
+         echo "Unluckiest Day : "; luckDay | sort -k2 -rn | tail -1;
 }
 function luckDay()
 {
@@ -41,8 +44,19 @@ function luckDay()
 		 echo $j ${playingDay["$j"]}
 done	 
 }
+function wantToContinue()
+{
+	while [[ ${playingDay[playingDay20]} -ge 0  ]]
+ 	do
+		read -p "do you want to continue(y/n) : " wish
+		if [[ $wish == "y" ]]
+		 then
+			totalDay
+	    else
+			echo "thank you for playing"
+		break;
+	fi	
+done
+}
 totalDay
-echo "20 Day amount with win/loose : " $totalAmount
-echo "luckiest Day : "; luckDay | sort -k2 -rn | head -1;
-echo "Unluckiest Day : "; luckDay | sort -k2 -rn | tail -1;
-
+wantToContinue
