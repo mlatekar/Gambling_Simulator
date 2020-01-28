@@ -28,8 +28,21 @@ for ((i=1; i<=$DAY; i++))
 		 done
 	     playingDay[playingDay$i]=$(($STAKE-$cash))
    		totalAmount=$((totalAmount+${playingDay[playingDay$i]}))	
-	     echo "DAY $i  : "${playingDay[playingDay$i]}
+			echo "DAY $i  : "${playingDay[playingDay$i]}" amount : "$totalAmount
+			p=$i
+			playingDay[playingDay$p]=$totalAmount
+
 	done
+}
+function luckiestDay()
+{
+	for j in ${!playingDay[@]}
+		do 
+		 echo $j ${playingDay["$j"]}
+done	 
 }
 totalDay
 echo "20 Day amount with win/loose : " $totalAmount
+echo "luckiest Day : "; luckiestDay | sort -k2 -rn | head -1;
+echo "Unluckiest Day : "; luckiestDay | sort -k2 -rn | tail -1;
+
