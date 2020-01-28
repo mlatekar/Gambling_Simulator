@@ -34,7 +34,7 @@ for ((i=1; i<=$DAY; i++))
 
 	done
 }
-function luckiestDay()
+function luckDay()
 {
 	for j in ${!playingDay[@]}
 		do 
@@ -43,6 +43,6 @@ done
 }
 totalDay
 echo "20 Day amount with win/loose : " $totalAmount
-echo "luckiest Day : "; luckiestDay | sort -k2 -rn | head -1;
-echo "Unluckiest Day : "; luckiestDay | sort -k2 -rn | tail -1;
+echo "luckiest Day : "; luckDay | sort -k2 -rn | head -1;
+echo "Unluckiest Day : "; luckDay | sort -k2 -rn | tail -1;
 
